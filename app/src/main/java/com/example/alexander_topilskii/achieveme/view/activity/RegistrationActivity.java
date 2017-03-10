@@ -1,6 +1,6 @@
 package com.example.alexander_topilskii.achieveme.view.activity;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -8,14 +8,14 @@ import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.alexander_topilskii.achieveme.R;
-import com.example.alexander_topilskii.achieveme.presenter.LoginPresenter;
-import com.example.alexander_topilskii.achieveme.view.view.LoginView;
+import com.example.alexander_topilskii.achieveme.presenter.RegistrationPresenter;
+import com.example.alexander_topilskii.achieveme.view.view.RegistrationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends MvpAppCompatActivity implements LoginView {
+public class RegistrationActivity extends MvpAppCompatActivity implements RegistrationView {
     @BindView(R.id.input_login_edittext)
     EditText loginEditText;
 
@@ -23,29 +23,24 @@ public class LoginActivity extends MvpAppCompatActivity implements LoginView {
     EditText passwordEditText;
 
     @InjectPresenter
-    LoginPresenter mainPresenter;
+    RegistrationPresenter registrationPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
-    }
-
-    @OnClick(R.id.login_btn)
-    public void login() {
-        String name = loginEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        mainPresenter.login(name, password, getApplicationContext());
     }
 
     @OnClick(R.id.registrationBtn)
     public void registration() {
-        startActivity(new Intent(this, RegistrationActivity.class));
+        String name = loginEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+        registrationPresenter.registration(name, password, getApplicationContext());
     }
 
     @Override
-    public void authorizationError(String errorMessage) {
+    public void registrationError(String errorMessage) {
         Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
     }
 }

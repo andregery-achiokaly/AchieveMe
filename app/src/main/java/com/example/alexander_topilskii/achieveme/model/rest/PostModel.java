@@ -2,6 +2,10 @@ package com.example.alexander_topilskii.achieveme.model.rest;
 
 
 public class PostModel {
+    public static final String SUCCESS_RESPONSE = "true";
+    public static final String ERROR_RESPONSE = "Registration error";
+
+
     private String success;
     private String message;
     private String token;

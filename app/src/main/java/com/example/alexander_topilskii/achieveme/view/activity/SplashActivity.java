@@ -25,7 +25,7 @@ public class SplashActivity extends MvpAppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        boolean isAuthorization = getDefaults(IS_AUTHORIZATION, getApplicationContext());
+        boolean isAuthorization = getUser(IS_AUTHORIZATION, getApplicationContext());
         if (!isAuthorization) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
@@ -37,7 +37,7 @@ public class SplashActivity extends MvpAppCompatActivity {
         }
     }
 
-    public boolean getDefaults(String key, Context context) {
+    public boolean getUser(String key, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getBoolean(key, false);
     }

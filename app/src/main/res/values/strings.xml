@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AchieveMe</string>
+
+    <!--  Errors  -->
+    <string name="empty_logan_error">Login can\'t be empty!</string>
+    <string name="empty_password_error">password can\'t be empty!</string>
+    <string name="welcome_message">Welcome!</string>
+
+
 </resources>
